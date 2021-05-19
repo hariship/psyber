@@ -1,0 +1,22 @@
+{
+    "name": "my-awesome-package",
+    "version": "1.0.0",
+    "scripts": {
+        "build": "rm -rf js/ && tsc",
+        "start": "nodemon --exec babel-node ./built/server.js"
+    },
+    "devDependencies": {
+        "babel": "^6.23.0",
+        "babel-cli": "^6.26.0",
+        "babel-core": "^6.26.3",
+        "babel-preset-env": "^1.7.0",
+        "babel-preset-es2015": "^6.24.1",
+        "body-parser": "^1.19.0",
+        "cors": "^2.8.5",
+        "dotenv": "^9.0.2",
+        "express": "^4.17.1",
+        "nodemon": "^2.0.7",
+        "socket-io": "^1.0.0",
+        "socket.io": "^4.1.2"
+    }
+}
