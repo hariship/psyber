@@ -1,10 +1,12 @@
-## Send electrode signals' data using websocket
+## Record Muse device connection status
 
-### Install dependencies
+### Send electrode signals' data using websocket
+
+#### Install dependencies
 ``yarn``
 
-### Build
+#### Build
 ``yarn build``
 
-### Run
+#### Run
 ``yarn start``
