@@ -1,4 +1,4 @@
-## Send Electrode signals using websocket
+## Send electrode signals' data using websocket
 
 ### Install dependencies
 ``yarn``
