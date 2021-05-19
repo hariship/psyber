@@ -4,9 +4,20 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.0/socket.io.js"></script> 
 <script> 
 
+function disconnect(){
+    var socket = io.connect('http://localhost:5000', {
+        path: '/connection-status',
+        secure: true, 
+        transports : ['websocket']
+    });
+
+    socket.emit('forceDisconnect');
+}
+
 function receiveData()
 {
     var socket = io.connect('http://localhost:5000', {
+        path: '/connection-status',
         secure: true, 
         transports : ['websocket']
     });
@@ -18,7 +29,11 @@ function receiveData()
         socket.send('hi!'); 
     });
 
-    socket.on('announcements', function(data){ 
+    socket.on('welcome', function(data){ 
+        socket.emit('dynamic-values', 'Hello')
+    });
+
+    socket.on('connection-status', function(data){ 
         $("ol").append(`<li>${JSON.stringify(data)}</li>`);
     });
 
@@ -27,16 +42,13 @@ function receiveData()
     });
 }
 
-$(document).ready(function() {
-    receiveData();
-});
 </script> 
 </head>
 <body>
     <div id="log">
-        <ol>
-
-        </ol>
+        <button onclick="receiveData()">Click me to connect</button>
+        <button onclick="disconnect()">Click me to disconnect</button>
+        <ol></ol>
     </div>
 </body>
 </html>
