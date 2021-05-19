@@ -13,7 +13,7 @@ app.use(require('cors')())
 
 const socket = io.listen(serverIO);
 
-let connectionStatus = require('../controllers/connection-status');
+let connectionStatus = require('../controllers');
 
 socket.on('connection', function(client){
   console.log(`${client.id} is connected`);
@@ -27,7 +27,7 @@ socket.on('connection', function(client){
   client.on('static-values', function(data){
     connectionStatus.dynamic(socket)  
   })
-  
+
   client.on('forceDisconnect', function(data){
     socket.close();
   })

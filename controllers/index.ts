@@ -1,8 +1,31 @@
-// import express from 'express'
-// import { app } from '../src/server';
-// // import defaultRoute from '../../connection-status';
-// const routes = express.Router();
-// export const http = require("http").createServer(app);
-// export const io = require("socket.io")(http, {path: '/connection-status'})
+import { clearIntervalBasedOnCounter, 
+    getDynamicConnectionStatus, 
+    getStaticConnectionStatus } from '../src/utils/utils';
 
-// export default routes
+function dynamicConnectionStatus(socket) {
+    let counter = 0;
+    const looper = setInterval(function(){
+    const connectionStatus = getDynamicConnectionStatus()
+    counter++   
+    clearIntervalBasedOnCounter(counter,looper)
+    console.log('connection-status', connectionStatus)
+    socket.emit('connection-status', connectionStatus)
+    }, 1000)
+}
+
+function staticConnectionStatus(socket) {
+    let counter = 0;
+    const looper = setInterval(function(){
+    const connectionStatus = getStaticConnectionStatus(counter)
+    counter++   
+    clearIntervalBasedOnCounter(counter,looper)
+    console.log('connection-status', connectionStatus)
+    socket.emit('connection-status', connectionStatus)
+  }, 1000)
+}
+
+
+module.exports = {
+    dynamic: dynamicConnectionStatus,
+    static: staticConnectionStatus
+}
