@@ -34,7 +34,7 @@ function receiveData()
     });
 
     socket.on('welcome', function(data){ 
-        socket.emit('dynamic-values', 'Hello')
+        socket.emit('static-values', 'Hello')
     });
 
     socket.on('connection-status', function(data){ 

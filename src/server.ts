@@ -25,7 +25,7 @@ socket.on('connection', function(client){
   })
 
   client.on('static-values', function(data){
-    connectionStatus.dynamic(socket)  
+    connectionStatus.static(socket)  
   })
 
   client.on('forceDisconnect', function(data){
