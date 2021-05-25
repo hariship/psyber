@@ -9,9 +9,7 @@ function clearMe(){
 }
 
 function disconnect(){
-    var socket = io.connect('http://localhost:5000', {
-        path: '/connection-status',
-        secure: true, 
+    var socket = io.connect('ws://localhost:5000', {
         transports : ['websocket']
     });
 
@@ -20,9 +18,7 @@ function disconnect(){
 
 function receiveData()
 {
-    var socket = io.connect('http://localhost:5000', {
-        path: '/connection-status',
-        secure: true, 
+    var socket = io.connect('ws://localhost:5000', {
         transports : ['websocket']
     });
 

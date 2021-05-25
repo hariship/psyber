@@ -8,7 +8,7 @@ export const serverIO = express()
             console.log(`Listening Socket on ${ PORT }`)
           });
 export const http = require("http").createServer(app);
-export const io = require("socket.io")(http, {path: '/connection-status'})
+export const io = require("socket.io")(http)
 app.use(require('cors')())
 
 const socket = io.listen(serverIO);
